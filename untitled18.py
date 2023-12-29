@@ -8,7 +8,7 @@ from google.oauth2 import service_account
 from googleapiclient.discovery import build
 
 # Load service account credentials
-credentials = service_account.Credentials.from_service_account_file('reliable-vector-409609-bc6898684315.json')
+credentials = service_account.Credentials.from_service_account_file('/content/reliable-vector-409609-93318a14498b.json')
 drive_service = build('drive', 'v3', credentials=credentials)
 
 
