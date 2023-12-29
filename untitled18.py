@@ -9,7 +9,7 @@ from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 
 # Add the path to your downloaded credentials JSON file
-credentials_file_path = 'path_to_your_credentials_file.json'
+credentials_file_path = 'reliable-vector-409609-bc6898684315.json'
 
 # Function to authenticate with Google Drive using OAuth2 credentials
 def authenticate_drive():
