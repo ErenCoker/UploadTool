@@ -1,16 +1,28 @@
-#%%writefile app.py
+%%writefile app.py
 import io
 import streamlit as st
-
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaIoBaseUpload
-from google.oauth2 import service_account
-from googleapiclient.discovery import build
 
-# Load service account credentials
-credentials = service_account.Credentials.from_service_account_file('/content/reliable-vector-409609-93318a14498b.json')
-drive_service = build('drive', 'v3', credentials=credentials)
+# Update your import statements
+from google.oauth2.credentials import Credentials
+from google_auth_oauthlib.flow import InstalledAppFlow
 
+# Add the path to your downloaded credentials JSON file
+credentials_file_path = 'path_to_your_credentials_file.json'
+
+# Function to authenticate with Google Drive using OAuth2 credentials
+def authenticate_drive():
+    flow = InstalledAppFlow.from_client_secrets_file(
+        credentials_file_path,
+        scopes=['https://www.googleapis.com/auth/drive']
+    )
+    creds = flow.run_local_server(port=0)
+    return creds
+
+# Authentication with Google Drive
+creds = authenticate_drive()
+drive_service = build('drive', 'v3', credentials=creds)
 
 
 # Function to check if folder exists with given country name
@@ -116,4 +128,3 @@ if user_email in user_credentials:
         st.warning("Incorrect password. Please try again.")
 else:
     st.warning("You are not authorized to access this application.")
-
