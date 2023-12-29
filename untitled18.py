@@ -1,16 +1,17 @@
 #%%writefile app.py
 import io
 import streamlit as st
+
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaIoBaseUpload
+from google.oauth2 import service_account
+from googleapiclient.discovery import build
 
-from google.colab import auth
-PROJECT_ID = "reliable-vector-409609"
-auth.authenticate_user(project_id=PROJECT_ID)
+# Load service account credentials
+credentials = service_account.Credentials.from_service_account_file('/content/reliable-vector-409609-93318a14498b.json')
+drive_service = build('drive', 'v3', credentials=credentials)
 
-# Authentication with Google Drive
-#auth.authenticate_user()
-drive_service = build('drive', 'v3')
+
 
 # Function to check if folder exists with given country name
 def check_country_folder_exists(country_name):
@@ -115,3 +116,4 @@ if user_email in user_credentials:
         st.warning("Incorrect password. Please try again.")
 else:
     st.warning("You are not authorized to access this application.")
+
