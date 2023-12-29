@@ -5,6 +5,10 @@ from google.colab import auth
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaIoBaseUpload
 
+from google.colab import auth
+PROJECT_ID = "reliable-vector-409609"
+auth.authenticate_user(project_id=PROJECT_ID)
+
 # Authentication with Google Drive
 auth.authenticate_user()
 drive_service = build('drive', 'v3')
@@ -107,7 +111,7 @@ if user_email in user_credentials:
                 st.warning("Please enter a document number.")
             elif submit_button and not document_type:
                 st.warning("Please select a document type.")
-        
+
     else:
         st.warning("Incorrect password. Please try again.")
 else:
