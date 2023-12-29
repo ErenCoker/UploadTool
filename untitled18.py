@@ -1,7 +1,6 @@
 #%%writefile app.py
 import io
 import streamlit as st
-from google.colab import auth
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaIoBaseUpload
 
