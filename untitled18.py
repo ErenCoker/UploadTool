@@ -1,4 +1,4 @@
-%%writefile app.py
+^#%%writefile app.py
 import io
 import streamlit as st
 from googleapiclient.discovery import build
