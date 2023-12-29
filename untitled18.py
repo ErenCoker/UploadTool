@@ -9,7 +9,7 @@ PROJECT_ID = "reliable-vector-409609"
 auth.authenticate_user(project_id=PROJECT_ID)
 
 # Authentication with Google Drive
-auth.authenticate_user()
+#auth.authenticate_user()
 drive_service = build('drive', 'v3')
 
 # Function to check if folder exists with given country name
